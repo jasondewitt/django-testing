@@ -1,8 +1,8 @@
 [Service]
 Restart=on-failure
 User=USER
-WorkingDirectory=/home/USER/sites/SITENAME/source
-ExecStart=/home/USER/sites/SITENAME/virtualenv/bin/gunicorn \
+WorkingDirectory=/home/jason/sites/SITENAME/source
+ExecStart=/home/jason/sites/SITENAME/virtualenv/bin/gunicorn \
     --bind unix:/tmp/SITENAME.socket \
     superlists.wsgi:application
 
