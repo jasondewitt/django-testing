@@ -1,5 +1,6 @@
 from selenium.webdriver.common.keys import Keys
 from .base import FunctionalTest
+import time
 
 from unittest import skip
 
@@ -9,6 +10,7 @@ class ItemValidationTest(FunctionalTest):
         # Edit goes to the home page adn accidentially tries to submit
         # an empty list item. She hits enter on the empty input box
         self.browser.get(self.live_server_url)
+
         self.browser.find_element_by_id('id_new_item').send_keys(Keys.ENTER)
 
         # the home page refreshes, and there is an error message saying
