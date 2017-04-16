@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lists',
+    'accounts',
+]
+
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.PasswordlessAuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +143,5 @@ LOGGING = {
     },
     'root': {'level': 'INFO'},
 }
+
+EMAIL_BACKEND = 'django_sendmail_backend.backends.EmailBackend'
