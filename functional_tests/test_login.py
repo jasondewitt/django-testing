@@ -24,7 +24,7 @@ class LoginTest(FunctionalTest):
         inbox = poplib.POP3_SSL('pop.gmail.com')
         try:
             inbox.user(test_email)
-            inbox.pass_(os.envrion['EMAIL_PASSWORD'])
+            inbox.pass_(os.environ['EMAIL_PASSWORD'])
             while time.time() - start < 60:
                 count, _ = inbox.stat()
                 for i in reversed(range(amx(1, count -10), count+1)):
