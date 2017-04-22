@@ -25,14 +25,13 @@ class LoginTest(FunctionalTest):
         try:
             inbox.user(test_email)
             inbox.pass_(os.environ['EMAIL_PASSWORD'])
+            count, _ = inbox.stat()
             while time.time() - start < 60:
-                count, _ = inbox.stat()
+
                 for i in reversed(range(max(1, count - 10), count + 1)):
                     print('getting msg', i)
                     _, lines, __ = inbox.retr(i)
-                    print(lines)
                     lines = [l.decode('utf8') for l in lines]
-
                     if f'Subject: {subject}' in lines:
                         email_id = i
                         body = '\n'.join(lines)
@@ -48,7 +47,7 @@ class LoginTest(FunctionalTest):
         # in the navbar for the first time. It's telling her to enter her email
         # address , so she does.
         if self.staging_server:
-            test_email = 'me@roxet.net'
+            test_email = 'testemail@roxet.net'
         else:
             test_email = 'edith@example.com'
         self.browser.get(self.live_server_url)
