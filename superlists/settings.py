@@ -144,4 +144,7 @@ LOGGING = {
     'root': {'level': 'INFO'},
 }
 
-EMAIL_BACKEND = 'django_sendmail_backend.backends.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'me@roxet.net'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = True
