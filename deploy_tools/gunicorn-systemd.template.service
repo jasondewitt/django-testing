@@ -1,9 +1,12 @@
 [Service]
 Restart=on-failure
 User=USER
+ENVIRONMENT=EMAIL_PASSWORD=<SECRET>
 WorkingDirectory=/home/jason/sites/SITENAME/source
 ExecStart=/home/jason/sites/SITENAME/virtualenv/bin/gunicorn \
     --bind unix:/tmp/SITENAME.socket \
+    --access-logfile ../access.log \
+    --error-logfile ../error.log \
     superlists.wsgi:application
 
 [Install]
