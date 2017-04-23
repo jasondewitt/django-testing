@@ -1,7 +1,8 @@
 from .base import FunctionalTest
 from selenium.webdriver.common.keys import Keys
+import time
 
-class LayoutAndStylingText(FunctionalTest):
+class LayoutAndStylingTest(FunctionalTest):
 
     def test_layout_and_styling(self):
         # edit goes to the home page
@@ -17,9 +18,8 @@ class LayoutAndStylingText(FunctionalTest):
         )
 
         # she starts a new list and sees the input is centerd on that page too
-        inputbox.send_keys("testing")
-        inputbox.send_keys(Keys.ENTER)
-        self.wait_for_row_in_list_table('1: testing')
+        self.add_list_item('testing')
+
         inputbox = self.get_item_input_box()
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
